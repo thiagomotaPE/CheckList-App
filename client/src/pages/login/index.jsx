@@ -2,10 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { Container, Content, Title, Form, LinkContainer } from './styles'
 import { Button } from '../../components/Button'
+import { Footer } from '../../components/Footer'
 
 const Login = () => {
   return (<>
     <Container>
+      <Title>CheckList</Title>
       <Content>
         <Title>Login</Title>
           <Form>
@@ -22,6 +24,7 @@ const Login = () => {
         <LinkContainer>
           <Link to= "/cadastre"> Fazer um novo Cadastro</Link>
         </LinkContainer>
+        <Footer />
       </Content>
     </Container>
     </>

@@ -12,7 +12,7 @@ const CheckList = () => {
     <Header />
 
     <LinkContainer>
-      <Link to= "/login"> Sair da conta</Link>
+      <Link to= "/"> Sair da conta</Link>
     </LinkContainer>
 
     <TaskCard onClick={() => setTaskPopupOpen(true)} desc="22:07, 31/01/2023" title="tarefa numero 1"/>

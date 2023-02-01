@@ -24,7 +24,9 @@ export const Content = styled.div`
 `
 
 export const Title = styled.h1`
+	text-align: center;
     font-size: 2.5rem;
+	margin-top: 5px;
 	margin-bottom: 2rem;
 	text-transform: capitalize; 
     color:  #646ff0;

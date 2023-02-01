@@ -15,7 +15,7 @@ function App() {
     <Router>
       <GlobalStyle />
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route  path="/cadastre" element={<Cadastre />} />
         <Route  path="/checkList" element={<CheckList />} />
       </Routes>
