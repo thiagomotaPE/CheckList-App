@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {NewTaskPopUp} from '../NewTaskPopUp'
+import { Button } from '../Button'
 
-import { Container, Logo, NewTask } from './styles'
+import { Container, Logo } from './styles'
 
 const Header = () => {
+
+  const [popupOpen, setPopupOpen] = useState(false);
   return (
     <Container>
         <Logo>Check List</Logo>
-        <NewTask>New Task</NewTask>
-        <NewTaskPopUp></NewTaskPopUp>
+        <Button  variant="primary" title="ADD Task">ADD Task</Button>
+        <NewTaskPopUp popupOpen={popupOpen} setPopupOpen={setPopupOpen} />
     </Container>
   )
 }
