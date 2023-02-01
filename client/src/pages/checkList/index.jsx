@@ -17,6 +17,9 @@ const CheckList = () => {
 
     <TaskCard onClick={() => setTaskPopupOpen(true)} desc="22:07, 31/01/2023" title="tarefa numero 1"/>
     <TaskCard onClick={() => setTaskPopupOpen(true)} desc="12:30, 2/05/2023" title="tarefa 2"/>
+    <TaskCard onClick={() => setTaskPopupOpen(true)} desc="12:30, 2/05/2023" title="tarefa 3"/>
+    <TaskCard onClick={() => setTaskPopupOpen(true)} desc="12:30, 2/05/2023" title="tarefa 4"/>
+    <TaskCard onClick={() => setTaskPopupOpen(true)} desc="12:30, 2/05/2023" title="tarefa 5"/>
 
     <TaskCardPopup taskPopupOpen={taskPopupOpen} setTaskPopupOpen={setTaskPopupOpen} title="Task Title" description="sgsggsgsgsgsgsgsgsgsgsgsssgsg"/>
 
