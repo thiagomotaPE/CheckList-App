@@ -1,12 +1,9 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
 import { Container, Content, Title, Form, LinkContainer } from './styles'
 import { Button } from '../../components/Button'
 
 const Login = () => {
-  const navigate = useNavigate();
   return (<>
     <Container>
       <Content>

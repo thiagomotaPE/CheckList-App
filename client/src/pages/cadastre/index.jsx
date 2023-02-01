@@ -1,15 +1,29 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
-//import { } from './styles'
+import {Container, Content, Title, Form, LinkContainer } from './styles'
+import { Button } from '../../components/Button';
 
 const Cadastre = () => {
-    const navigate = useNavigate();
     return (<>
-      <div>teste Cadastro</div>
-      <Link to= "/login">Voltar para o login</Link>
-      <Link to= "/checkList"> ir para as CheckList</Link>
+      <Container>
+        <Content>
+          <Title>Login</Title>
+            <Form>
+                <label htmlFor='E-mail'>
+                    E-mail
+                    <input type="text"></input>
+                </label>
+                <label htmlFor='Password'>
+                    Password
+                    <input type="text"></input>
+                </label>
+            </Form>
+          <Link to= "/checkList"> <Button title="Cadastrar" /> </Link>
+          <LinkContainer>
+            <Link to= "/login"> Voltar para o login</Link>
+          </LinkContainer>
+        </Content>
+      </Container>
       </>
     )
 }
