@@ -5,7 +5,6 @@ export const LinkContainer = styled.div`
     a{
         color: #646681;
         text-decoration: none;
-        transition: 1.5s;
         &:hover{
             text-decoration: underline;
         }

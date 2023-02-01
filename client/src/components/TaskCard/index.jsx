@@ -1,9 +1,9 @@
 import React from 'react'
 import { Container, CheckBox, Description, Actions } from './styles'
 
-const Task = ({title, desc}) => {
+const TaskCard = ({title, desc, onClick}) => {
   return (
-    <Container>
+    <Container onClick={onClick}>
         <CheckBox type="checkbox"></CheckBox>
         <Description>
             <h3 >{title}</h3>
@@ -25,4 +25,4 @@ const Task = ({title, desc}) => {
   )
 }
 
-export{ Task }
+export{ TaskCard }
