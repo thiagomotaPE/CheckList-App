@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <Container>
         <Logo>Check List</Logo>
-        <Button  variant="primary" title="ADD Task">ADD Task</Button>
+        <Button variant="primary" onClick={() => setPopupOpen(true)} title="ADD Task" />
         <NewTaskPopUp popupOpen={popupOpen} setPopupOpen={setPopupOpen} />
     </Container>
   )

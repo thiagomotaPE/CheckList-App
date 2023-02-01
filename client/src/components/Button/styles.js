@@ -8,7 +8,7 @@ export const ButtonContainer = styled.button`
     border: none;
     border-radius: 3px;
     align-items: center;
-    width: 200px;
+    width: 100px;
     font-size: 1rem;
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
@@ -27,35 +27,3 @@ export const ButtonContainer = styled.button`
         }
     `}
 `
-
-// .button {
-// 	display: inline-block;
-// 	height: auto;
-// 	padding: 0.8rem 2rem;
-// 	border: none;
-// 	border-radius: 6px;
-// 	font-weight: 500;
-// 	font-size: 1.6rem;
-// 	text-decoration: none;
-// 	text-transform: capitalize;
-// 	cursor: pointer;
-// 	overflow: hidden;
-// 	&__select {
-// 		color: var(--black-2);
-// 		font-family: Poppins;
-// 		padding: 1rem;
-// 		border: none;
-// 		background-color: var(--bg-3);
-
-// 		width: 150px;
-// 		cursor: pointer;
-// 	}
-// }
-// .button--primary {
-// 	background-color: var(--primaryPurple);
-// 	color: var(--white);
-// }
-// .button--secondary {
-// 	background-color: var(--bg-3);
-// 	color: var(--black-1);
-// }

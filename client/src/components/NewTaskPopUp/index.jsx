@@ -11,9 +11,10 @@ import {
 
 const NewTaskPopUp = ({popupOpen, setPopupOpen}) => {
   return (<>
+  {popupOpen && (
     <Wrapper>
         <Container>
-            <CloseButton>
+            <CloseButton onClick={() => setPopupOpen(false)}>
                 <span class="material-symbols-outlined">
                     close
                 </span>
@@ -30,11 +31,12 @@ const NewTaskPopUp = ({popupOpen, setPopupOpen}) => {
                 </label>
                 <ButtonContainer>
                     <Button variant="primary" title="ADD" />
-                    <Button variant="secundary" title="Cancel" />
+                    <Button variant="secundary" title="Cancel" onClick={() => setPopupOpen(true)}/>
                 </ButtonContainer>
             </Form>
         </Container>
     </Wrapper>
+    )}
     </>
   )
 }
