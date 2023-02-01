@@ -11,6 +11,7 @@ const Header = () => {
     <Container>
         <Logo>Check List</Logo>
         <Button variant="primary" onClick={() => setPopupOpen(true)} title="ADD Task" />
+        
         <NewTaskPopUp popupOpen={popupOpen} setPopupOpen={setPopupOpen} />
     </Container>
   )
