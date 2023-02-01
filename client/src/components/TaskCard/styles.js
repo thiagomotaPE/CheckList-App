@@ -24,6 +24,9 @@ export const Description = styled.div`
     flex-direction: column;
     h3{
         color: #585858;
+        &:hover{
+            color: #646ff0;
+        }
     }
 
     p{

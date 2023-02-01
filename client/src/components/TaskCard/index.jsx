@@ -3,9 +3,9 @@ import { Container, CheckBox, Description, Actions } from './styles'
 
 const TaskCard = ({title, desc, onClick}) => {
   return (
-    <Container onClick={onClick}>
+    <Container>
         <CheckBox type="checkbox"></CheckBox>
-        <Description>
+        <Description onClick={onClick}>
             <h3 >{title}</h3>
             <p>{desc}</p>
         </Description>
