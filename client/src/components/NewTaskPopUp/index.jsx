@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { 
     Wrapper,
     Container,
@@ -10,6 +10,8 @@ import {
     import { Button } from '../Button'
 
 const NewTaskPopUp = ({popupOpen, setPopupOpen}) => {
+    const [taskName, setTaskName] = useState('')
+    const [taskDescription, setTaskDescription] = useState('')
   return (<>
   {popupOpen && (
     <Wrapper>
