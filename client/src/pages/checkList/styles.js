@@ -56,6 +56,23 @@ export const ButtonContainer = styled.div`
 	gap: 1rem;
     font-family: 'Poppins', sans-serif;
 `
+export const Button = styled.button`
+    color: #fff;
+    padding: 8px;
+    background-color: #646ff0;
+    border: none;
+    border-radius: 3px;
+    align-items: center;
+    width: 100px;
+    margin-top: 5px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+
+    :hover{
+        background-color:  #6470f0a6;
+    }
+`
 
 export const TaskContainer = styled.div`
     display: flex;
@@ -94,6 +111,7 @@ export const Description = styled.div`
         background-color:  #ecedf6;
         color: #646681;
         border: none;
+        width: 350px;
         max-width: 400px;
         padding: 15px;
         font-size: 1rem;

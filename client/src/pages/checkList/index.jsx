@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer';
-import { Button } from '../../components/Button'
 import Axios from 'axios'
 import { 
   LinkContainer,
@@ -10,6 +9,7 @@ import {
   Form,
   FormTitle,
   ButtonContainer,
+  Button,
   TaskContainer, 
   CheckBox, 
   Description, 
@@ -95,7 +95,8 @@ const CheckList = () => {
             }} className="dateTask"/>
         </label>
         <ButtonContainer>
-            <Button variant="primary" title="ADD" onClick={submitTask}/>
+            <Button onClick={submitTask}>ADD
+            </Button>
         </ButtonContainer>
       </Form>
     </Container>
