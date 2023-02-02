@@ -42,15 +42,9 @@ export const Form = styled.form`
 			background-color: #fff;
 			font-size: 1rem;
 		}
-        #description{
-            margin-top: 0.5rem;
-			margin-bottom: 2rem;
-			width: 100%;
-			padding: 1rem;
-            height: 100px;
-			border: none;
-			background-color: #fff;
-			font-size: 1.6rem;
+        .dateTask{
+            width: 50%;
+            display: flex;
         }
 	}
 `
@@ -96,6 +90,14 @@ export const Description = styled.div`
         color: #646681;
     }
 
+    .updateTask{
+        background-color:  #ecedf6;
+        color: #646681;
+        border: none;
+        max-width: 400px;
+        padding: 15px;
+        font-size: 1rem;
+    }
 `
 
 export const Actions = styled.button`
