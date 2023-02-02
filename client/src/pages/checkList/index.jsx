@@ -68,29 +68,31 @@ const CheckList = () => {
       </Form>
     </Container>
 
-    <TaskContainer>
-        <CheckBox type="checkbox"></CheckBox>
-        <Description>
-          {taskList.map((val) => {
-            return <> <h3>{val.name_task}</h3> <p>{val.description_task}</p>
-            </>
-          })}
-            <p>22:07, 31/01/2023</p>
-        </Description>
-        <div>
-          <Actions>
-              <span class="material-symbols-outlined">
-                  delete
-              </span>
-          </Actions>
-          <Actions>
-              <span class="material-symbols-outlined">
-                  edit
-              </span>
-          </Actions>
-        </div>
-    </TaskContainer>
 
+    {taskList.map((val) => {
+        return<>
+        <TaskContainer>
+            <CheckBox type="checkbox"></CheckBox>
+            <Description>
+                <h3>{val.name_task}</h3> <p>{val.description_task}</p>
+                
+                <p>22:07, 31/01/2023</p>
+            </Description>
+            <div>
+              <Actions>
+                  <span class="material-symbols-outlined">
+                      delete
+                  </span>
+              </Actions>
+              <Actions>
+                  <span class="material-symbols-outlined">
+                      edit
+                  </span>
+              </Actions>
+            </div>
+        </TaskContainer>
+    </>
+    })}
     <Footer />
     </>
   )
