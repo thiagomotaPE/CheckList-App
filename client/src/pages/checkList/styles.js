@@ -28,7 +28,7 @@ export const FormTitle = styled.h1`
 	font-size: 1.4rem;
 	text-transform: capitalize;
 `
-export const Form = styled.form`
+export const Form = styled.div`
 	width: 100%;
 	label {
 		font-size: 1.1rem;
