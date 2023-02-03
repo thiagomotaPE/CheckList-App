@@ -17,7 +17,32 @@ app.use(cors())
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended:true}))
 
-//select
+
+
+//insert users
+app.post("/api/insert", (req, res) => { 
+    const { email_login } = req.body
+    const { secret_password } = req.body
+
+    try {
+        const sqlInsert = "INSERT INTO users (email_login, secret_password) VALUES (?, ?);"
+        db.query(sqlInsert, [email_login, secret_password], (err, result) => {
+            if(err)
+                console.log(err)
+            response = result
+            res.send(response)
+        })
+       
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+
+
+
+
+//select tasks
 app.get('/api/get', (req, res) => {
     try {
         const sqlSelect = "SELECT * FROM tasks;"
@@ -32,9 +57,8 @@ app.get('/api/get', (req, res) => {
     }
 })
 
-//insert
+//insert tasks
 app.post("/api/insert", (req, res) => { 
-    console.log(req.body)
     const { name_task } = req.body
     const { description_task } = req.body
     const { date_init } = req.body
@@ -54,7 +78,7 @@ app.post("/api/insert", (req, res) => {
     }
 })
 
-//delete
+//delete tasks
 app.delete("/api/delete/:id_task", (req, res) => {
     const { id_task } = req.params
     
@@ -71,7 +95,7 @@ app.delete("/api/delete/:id_task", (req, res) => {
     }
 })
 
-//update
+//update tasks
 app.put("/api/update", (req, res) => {
     const { id_task } = req.body
     const { description_task } = req.body

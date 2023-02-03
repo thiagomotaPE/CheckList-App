@@ -31,7 +31,7 @@ export const Title = styled.h1`
 	text-transform: capitalize; 
     color:  #646ff0;
 `
-export const Form = styled.form`
+export const Form = styled.div`
 	width: 100%;
 	label {
 		font-size: 1.3rem;
@@ -47,6 +47,22 @@ export const Form = styled.form`
             box-shadow: 5px 5px 5px #00000020;
 		}
 	}
+`
+export const Button = styled.button`
+    color: #fff;
+    padding: 8px;
+    background-color: #646ff0;
+    border: none;
+    border-radius: 3px;
+    align-items: center;
+    width: 100px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+
+    :hover{
+        background-color:  #6470f0a6;
+    }
 `
 
 export const LinkContainer = styled.div`
