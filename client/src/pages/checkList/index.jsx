@@ -33,6 +33,7 @@ const CheckList = () => {
     }))
   }, [])
 
+  //enviar informações pro back e depois trazer de volta pro front
   const submitTask = () => {
     Axios.post("http://localhost:3001/api/insert", {
       name_task:name_task, 
@@ -42,17 +43,18 @@ const CheckList = () => {
     }).then((response) => {
       console.log(response)
     })
-    console.log(name_task)
 
     setTaskList([
       ...taskList, {name_task:name_task, description_task:description_task, date_init:date_init, date_end:date_end}
     ])
   }
 
+  //função para deletar tarefas
   const deletTask = (id) => {
     Axios.delete(`http://localhost:3001/api/delete/${id}`)
   }
 
+  //função para atualizar a descrição de uma tarefa
   const updateDescriptionTask = (id) => {
     Axios.put("http://localhost:3001/api/update", {
       description_task:newDescription,
@@ -64,50 +66,60 @@ const CheckList = () => {
   return (<>
     <Header />
 
+    {/* rota para voltar para a pagina de login */}
     <LinkContainer>
       <Link to= "/"> Sair da conta</Link>
     </LinkContainer>
 
-    {/* adicionar uma nova tarefa */}
+    {/* formulario para adicionar uma nova tarefa */}
     <Container>
       <Form>
+
         <FormTitle>ADD Task</FormTitle>
+
         <label htmlFor='title'>
             Title
             <input type="text" onChange={(e) => {
                 setName_task(e.target.value)
             }}/>
         </label>
+
         <label htmlFor='title'>
             Description
             <input type="text" onChange={(e) => {
                 setDescription_task(e.target.value)
             }}/>
         </label>
+
         <label htmlFor='title'>
             Initial Data
             <input type="date" onChange={(e) => {
                 setDate_init(e.target.value)
             }} className="dateTask"/>
         </label>
+
         <label htmlFor='title'>
             End Data
             <input type="date" onChange={(e) => {
                 setDate_end(e.target.value)
             }} className="dateTask"/>
         </label>
+
         <ButtonContainer>
             <Button onClick={submitTask}>ADD
             </Button>
         </ButtonContainer>
+
       </Form>
     </Container>
 
-    {/* lista de tarefas */}
+    {/*tarefa */}
     {taskList.map((val) => {
         return<>
         <TaskContainer>
+
             <CheckBox type="checkbox"></CheckBox>
+
             <Description>
                 <h3>{val.name_task}</h3> 
                 <p>{val.description_task}</p>
@@ -116,18 +128,23 @@ const CheckList = () => {
                   setNewDescription(e.target.value)
                 }}/>
             </Description>
+
             <div>
+
               <Actions onClick={() => {(updateDescriptionTask(val.id_task))}}>
                   <span className="material-symbols-outlined">
                       edit
                   </span>
               </Actions>
+
               <Actions onClick={() => {(deletTask(val.id_task))}}>
                   <span className="material-symbols-outlined">
                       delete
                   </span>
               </Actions>
+
             </div>
+            
         </TaskContainer>
     </>
     })}
