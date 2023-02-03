@@ -20,23 +20,23 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 
 //insert users
-app.post("/api/insert", (req, res) => { 
-    const { email_login } = req.body
-    const { secret_password } = req.body
+// app.post("/api/insert", (req, res) => { 
+//     const { email_login } = req.body
+//     const { secret_password } = req.body
 
-    try {
-        const sqlInsert = "INSERT INTO users (email_login, secret_password) VALUES (?, ?);"
-        db.query(sqlInsert, [email_login, secret_password], (err, result) => {
-            if(err)
-                console.log(err)
-            response = result
-            res.send(response)
-        })
+//     try {
+//         const sqlInsert = "INSERT INTO users (email_login, secret_password) VALUES (?, ?);"
+//         db.query(sqlInsert, [email_login, secret_password], (err, result) => {
+//             if(err)
+//                 console.log(err)
+//             response = result
+//             res.send(response)
+//         })
        
-    } catch (error) {
-        console.log(error)
-    }
-})
+//     } catch (error) {
+//         console.log(error)
+//     }
+// })
 
 
 
