@@ -17,7 +17,7 @@ app.use(cors())
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended:true}))
 
-//select from
+//select
 app.get('/api/get', (req, res) => {
     try {
         const sqlSelect = "SELECT * FROM tasks;"
@@ -32,16 +32,16 @@ app.get('/api/get', (req, res) => {
     }
 })
 
-//insert into
-app.post("/api/insert", (res, req) => { 
+//insert
+app.post("/api/insert", (req, res) => { 
     console.log(req.body)
-    const name_task = req.body.name_task
-    const description_task = req.body.description_task
-    const date_init = req.body.date_init
-    const date_end = req.body.date_end
+    const { name_task } = req.body
+    const { description_task } = req.body
+    const { date_init } = req.body
+    const { date_end } = req.body
 
     try {
-        const sqlInsert = "INSERT INTO tasks (name_task, description_task, date_init, date_end) VALUES ('?', '?', '?', '?');"
+        const sqlInsert = "INSERT INTO tasks (name_task, description_task, date_init, date_end) VALUES (?, ?, ?, ?);"
         db.query(sqlInsert, [name_task, description_task, date_init, date_end], (err, result) => {
             if(err)
                 console.log(err)
@@ -56,7 +56,7 @@ app.post("/api/insert", (res, req) => {
 
 //delete
 app.delete("/api/delete/:id_task", (req, res) => {
-    const id_task = req.params.id_task
+    const { id_task } = req.params
     
     try {
         const sqlDelete = "DELETE FROM tasks WHERE id_task = ?;"
@@ -73,8 +73,8 @@ app.delete("/api/delete/:id_task", (req, res) => {
 
 //update
 app.put("/api/update", (req, res) => {
-    const id_task = req.body.id_task
-    const description_task = req.body.description_task
+    const { id_task } = req.body
+    const { description_task } = req.body
     
     try {
         const sqlUpdate = "UPDATE tasks SET description_task = ? WHERE id_task = ?;"

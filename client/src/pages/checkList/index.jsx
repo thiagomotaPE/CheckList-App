@@ -42,6 +42,7 @@ const CheckList = () => {
     }).then((response) => {
       console.log(response)
     })
+    console.log(name_task)
 
     setTaskList([
       ...taskList, {name_task:name_task, description_task:description_task, date_init:date_init, date_end:date_end}
