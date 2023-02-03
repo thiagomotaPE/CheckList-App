@@ -19,7 +19,6 @@ const Cadastre = () => {
       })
   }
 
-    {/* tela de cadastro de novos usuarios */}
     return (<>
       <Container>
 

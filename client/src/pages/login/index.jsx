@@ -9,8 +9,7 @@ import {
   Title, 
   Form, 
   LinkContainer, 
-  Button, 
-  ErrorText 
+  Button,  
 } from './styles'
 import { Footer } from '../../components/Footer'
 
