@@ -15,7 +15,6 @@ import {
   Description, 
   Actions
  } from './styles'
-import axios from 'axios';
 
 
 const CheckList = () => {
@@ -29,7 +28,7 @@ const CheckList = () => {
   const [taskList, setTaskList] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:3001/api/get').then((response => {
+    Axios.get('http://localhost:3001/api/get').then((response => {
       setTaskList(response.data)
     }))
   }, [])
@@ -40,6 +39,8 @@ const CheckList = () => {
       description_task:description_task,
       date_init:date_init,
       date_end:date_end,
+    }).then((response) => {
+      console.log(response)
     })
 
     setTaskList([

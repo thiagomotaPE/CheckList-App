@@ -33,7 +33,8 @@ app.get('/api/get', (req, res) => {
 })
 
 //insert into
-app.post("/api/insert", (res, req) => {
+app.post("/api/insert", (res, req) => { 
+    console.log(req.body)
     const name_task = req.body.name_task
     const description_task = req.body.description_task
     const date_init = req.body.date_init
@@ -46,7 +47,8 @@ app.post("/api/insert", (res, req) => {
                 console.log(err)
             response = result
             res.send(response)
-        })  
+        })
+       
     } catch (error) {
         console.log(error)
     }
