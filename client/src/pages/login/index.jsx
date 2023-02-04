@@ -59,7 +59,9 @@ const Login = () => {
                     }}/>
               </label>
 
+              <Link to="/checkList">
               <Button type='submit' onClick={compareAccount}>Login</Button>
+              </Link>
               
           </Form>
         

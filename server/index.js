@@ -85,7 +85,14 @@ app.post("/api/comparetAccount", async (req, res) => {
                     if(err)
                         console.log(err)
                     })
-                    
+                    if (result.length > 0) {
+                        console.log("usuario invalido")
+                         
+                    } else {
+                        res.status(200).send({
+                            msg: "Logado"
+                        })
+                    }
 
 
 
