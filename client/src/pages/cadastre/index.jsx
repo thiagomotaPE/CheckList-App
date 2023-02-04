@@ -12,7 +12,7 @@ const Cadastre = () => {
   const [secret_password, setSecret_password] = useState('')
 
     //enviar informações pro back e depois trazer de volta pro front
-  const submitUsers = () => {
+  const submitNewUsers = () => {
       Axios.post("http://localhost:3001/api/insertUser", {
         email_login:email_login, 
         secret_password:secret_password,
@@ -39,7 +39,7 @@ const Cadastre = () => {
 
                 <label htmlFor='E-mail'>
                     E-mail
-                    <input type="text" onChange={(e) => {
+                    <input type="email" onChange={(e) => {
                         setEmail_login(e.target.value)
                     }}/>
                 </label>
@@ -51,7 +51,7 @@ const Cadastre = () => {
                     }}/>
                 </label>
 
-                <Button title="Cadastrar" onClick={submitUsers}>Cadastrar</Button>
+                <Button title="Cadastrar" onClick={submitNewUsers}>Cadastrar</Button>
 
             </Form>
 

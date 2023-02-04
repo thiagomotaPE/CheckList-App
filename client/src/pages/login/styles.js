@@ -31,7 +31,7 @@ export const Title = styled.h1`
 	text-transform: capitalize; 
 	color:  #646ff0;
 `
-export const Form = styled.form`
+export const Form = styled.div`
 	width: 100%;
 	label {
 		font-size: 1.3rem;

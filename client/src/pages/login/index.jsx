@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 
 import { 
   Container, 
@@ -10,8 +10,30 @@ import {
   Button,  
 } from './styles'
 import { Footer } from '../../components/Footer'
+import { Axios } from 'axios';
 
 const Login = () => {
+
+  const navigate = useNavigate();
+
+  const [loginCompare, setLoginCompare] = useState('')
+  const [passwordCompare, setPasswordCompare] = useState('')
+
+    //enviar informações pro back e depois trazer de volta pro front
+  const compareAccount = () => {
+      Axios.post("http://localhost:3001/api/comparetAccount", {
+        loginCompare:loginCompare, 
+        passwordCompare:passwordCompare,
+      }).then((response) => {
+        if(response.status === 200){
+          navigate("/checkList")
+        }else{
+          console.log("Usuario não cadastrado");
+        }
+      })
+  }
+
+
   return (<>
     <Container>
 
@@ -25,17 +47,19 @@ const Login = () => {
 
               <label htmlFor='E-mail'>
                   E-mail
-                  <input type="text" />
+                  <input type="email" onChange={(e) => {
+                        setLoginCompare(e.target.value)
+                    }}/>
               </label>
 
               <label htmlFor='Password'>
                   Password
-                  <input type="text" />
+                  <input type="password" min={8} onChange={(e) => {
+                        setPasswordCompare(e.target.value)
+                    }}/>
               </label>
 
-              <Link to= "/checkList">
-                  <Button type='submit'>Login</Button>
-              </Link>
+              <Button type='submit' onClick={compareAccount}>Login</Button>
               
           </Form>
         

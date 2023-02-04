@@ -30,14 +30,14 @@ app.post("/api/insertUser", async (req, res) => {
         const { secret_password } = req.body;
 
         const userValidation = yup.object().shape({
-            email_login: yup.string().email("email invalido!").required("email obrigatoria!"),
-            secret_password: yup.string().min(8).required("senha obrigatoria!")
+            email_login: yup.string().email("Email invalido!").required("Email obrigatoria!"),
+            secret_password: yup.string().min(8).required("Senha obrigatoria!")
         });
 
         if(!(await userValidation.isValid(req.body))){
             return res.status(400).json({
                 erro:true,
-                msg: "cadastro invalido"
+                msg: "Cadastro invalido"
             });
         }else{
             bcrypt.hash(secret_password, saltRounds, (error, hash) =>{
@@ -50,14 +50,12 @@ app.post("/api/insertUser", async (req, res) => {
                         console.log(err)
 
                     res.status(200).send({
-                        msg: "cadastro realizado"
+                        msg: "Cadastro realizado"
                     })
                 })
             });
         }
-
-        
-       
+  
     } catch (error) {
         console.log(error)
     }
@@ -65,6 +63,29 @@ app.post("/api/insertUser", async (req, res) => {
 
 
 //user validation
+app.post("/api/comparetAccount", async (req, res) => { 
+    try {
+        const { loginCompare } = req.body;
+        const { passwordCompare } = req.body;
+
+        const userValidation = yup.object().shape({
+            loginCompare: yup.string().email("Email invalido!").required("Email obrigatoria!"),
+            passwordCompare: yup.string().min(8).required("Senha obrigatoria!")
+        });
+
+        if(!(await userValidation.isValid(req.body))){
+            return res.status(400).json({
+                erro:true,
+                msg: "Preencha os dados corretamente"
+            });
+        }else{
+            
+        }
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 
 
 
@@ -87,12 +108,12 @@ app.get('/api/get', (req, res) => {
 
 //insert tasks
 app.post("/api/insert", (req, res) => { 
-    const { name_task } = req.body
-    const { description_task } = req.body
-    const { date_init } = req.body
-    const { date_end } = req.body
-
     try {
+        const { name_task } = req.body
+        const { description_task } = req.body
+        const { date_init } = req.body
+        const { date_end } = req.body
+
         const sqlInsert = "INSERT INTO tasks (name_task, description_task, date_init, date_end) VALUES (?, ?, ?, ?);"
         db.query(sqlInsert, [name_task, description_task, date_init, date_end], (err, result) => {
             if(err)
@@ -108,9 +129,9 @@ app.post("/api/insert", (req, res) => {
 
 //delete tasks
 app.delete("/api/delete/:id_task", (req, res) => {
-    const { id_task } = req.params
-    
     try {
+        const { id_task } = req.params
+
         const sqlDelete = "DELETE FROM tasks WHERE id_task = ?;"
         db.query(sqlDelete, id_task,  (err, result) => {
             if(err)
@@ -125,10 +146,10 @@ app.delete("/api/delete/:id_task", (req, res) => {
 
 //update tasks
 app.put("/api/update", (req, res) => {
-    const { id_task } = req.body
-    const { description_task } = req.body
-    
     try {
+        const { id_task } = req.body
+        const { description_task } = req.body
+
         const sqlUpdate = "UPDATE tasks SET description_task = ? WHERE id_task = ?;"
         db.query(sqlUpdate, [description_task, id_task],  (err, result) => {
             if(err)
