@@ -35,7 +35,7 @@ CREATE TABLE `tasks` (
   PRIMARY KEY (`id_task`),
   KEY `id_user` (`id_user`),
   CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,9 +48,9 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id_user` int NOT NULL AUTO_INCREMENT,
   `email_login` varchar(50) NOT NULL,
-  `secret_password` varchar(10) NOT NULL,
+  `secret_password` varchar(200) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -62,4 +62,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-03 18:17:22
+-- Dump completed on 2023-02-03 23:43:05
