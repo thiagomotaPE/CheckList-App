@@ -1,21 +1,28 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {Container, Content, Title, Form, LinkContainer, Button } from './styles'
 import { Footer } from '../../components/Footer';
 import Axios from 'axios'
 
 const Cadastre = () => {
 
+  const navigate = useNavigate();
+
   const [email_login, setEmail_login] = useState('')
   const [secret_password, setSecret_password] = useState('')
 
     //enviar informações pro back e depois trazer de volta pro front
   const submitUsers = () => {
-      Axios.post("http://localhost:3001/api/insert", {
+      Axios.post("http://localhost:3001/api/insertUser", {
         email_login:email_login, 
         secret_password:secret_password,
       }).then((response) => {
-        console.log(response)
+        if(response.status === 200){
+          navigate("/")
+        }else{
+          console.log("cadastro não realizado");
+        }
+        
       })
   }
 
@@ -39,14 +46,12 @@ const Cadastre = () => {
 
                 <label htmlFor='Password'>
                     Password
-                    <input type="text" onChange={(e) => {
+                    <input type="password" min={8} onChange={(e) => {
                         setSecret_password(e.target.value)
                     }}/>
                 </label>
 
-                <Link to= "/checkList">
-                  <Button title="Cadastrar" onClick={submitUsers}>Cadastrar</Button>
-                </Link>
+                <Button title="Cadastrar" onClick={submitUsers}>Cadastrar</Button>
 
             </Form>
 

@@ -1,8 +1,12 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors')
-const app = express()
-const mysql = require('mysql2')
+const express = require('express');
+const bodyParser = require('body-parser');
+const yup = require('yup');
+const cors = require('cors');
+const app = express();
+const mysql = require('mysql2');
+
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 //db conection
 const db = mysql.createConnection({
@@ -20,23 +24,47 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 
 //insert users
-// app.post("/api/insert", (req, res) => { 
-//     const { email_login } = req.body
-//     const { secret_password } = req.body
+app.post("/api/insertUser", async (req, res) => { 
+    try {
+        const { email_login } = req.body;
+        const { secret_password } = req.body;
 
-//     try {
-//         const sqlInsert = "INSERT INTO users (email_login, secret_password) VALUES (?, ?);"
-//         db.query(sqlInsert, [email_login, secret_password], (err, result) => {
-//             if(err)
-//                 console.log(err)
-//             response = result
-//             res.send(response)
-//         })
+        const userValidation = yup.object().shape({
+            email_login: yup.string().email("email invalido!").required("email obrigatoria!"),
+            secret_password: yup.string().min(8).required("senha obrigatoria!")
+        });
+
+        if(!(await userValidation.isValid(req.body))){
+            return res.status(400).json({
+                erro:true,
+                msg: "cadastro invalido"
+            });
+        }else{
+            bcrypt.hash(secret_password, saltRounds, (error, hash) =>{
+                if(error){
+                    console.log(error);
+                }
+                const sqlInsert = "INSERT INTO users (email_login, secret_password) VALUES (?, ?);"
+                db.query(sqlInsert, [email_login, hash], (err, result) => {
+                    if(err)
+                        console.log(err)
+
+                    res.status(200).send({
+                        msg: "cadastro realizado"
+                    })
+                })
+            });
+        }
+
+        
        
-//     } catch (error) {
-//         console.log(error)
-//     }
-// })
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+
+//user validation
 
 
 
