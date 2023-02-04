@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 
 
-//insert users
+//insert users / cadastre validation
 app.post("/api/insertUser", async (req, res) => { 
     try {
         const { email_login } = req.body;
@@ -62,7 +62,7 @@ app.post("/api/insertUser", async (req, res) => {
 })
 
 
-//user validation
+//select user / user validation
 app.post("/api/comparetAccount", async (req, res) => { 
     try {
         const { loginCompare } = req.body;
@@ -104,9 +104,6 @@ app.post("/api/comparetAccount", async (req, res) => {
         console.log(error)
     }
 })
-
-
-
 
 
 
