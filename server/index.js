@@ -79,7 +79,19 @@ app.post("/api/comparetAccount", async (req, res) => {
                 msg: "Preencha os dados corretamente"
             });
         }else{
-            
+            try {
+                const sqlSelect = "SELECT * FROM users WHERE email_login =?;"
+                db.query(sqlSelect, loginCompare, (err, result) => {
+                    if(err)
+                        console.log(err)
+                    })
+                    
+
+
+
+            } catch (error) {
+                console.log(error)
+            }
         }
     } catch (error) {
         console.log(error)
