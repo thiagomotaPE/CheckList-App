@@ -86,15 +86,24 @@ app.post("/api/comparetAccount", async (req, res) => {
                         console.log(err)
                     })
                     if (result.length > 0) {
-                        console.log("usuario invalido")
-                         
-                    } else {
-                        res.status(200).send({
-                            msg: "Logado"
+                        bcrypt.compare(passwordCompare, result[0].passwordCompare, (err, response) => {
+                            if (response) {
+                                const id = result[0].idusers
+    
+                                const token = jwt.sign({ id }, "09f26e402586e2faa8da4c98a35f1b20d6b033c6097befa8be3486a829587fe2f90a832bd3ff9d42710a4da095a2ce285b009f0c3730cd9b8e1af3eb84df6611", {
+                                    expiresIn: '24h',
+                                })
+    
+                                req.session.user = result;
+    
+                                res.json({ auth: true, token: token, result: result })
+                            } else {
+                                res.json({ auth: false, message: 'Combinação usuário/senha incorreta!' });
+                            }
                         })
+                    } else {
+                        res.json({ auth: false, message: 'Usuário não existe!' });
                     }
-
-
 
             } catch (error) {
                 console.log(error)
