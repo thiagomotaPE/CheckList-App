@@ -1,5 +1,6 @@
 package com.checklist.api.controllers;
 
+import com.checklist.api.domain.user.User;
 import com.checklist.api.domain.user.UserRepository;
 import com.checklist.api.domain.user.UserRequestDTO;
 import jakarta.validation.Valid;
@@ -21,8 +22,8 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity registerUser(@RequestBody @Valid UserRequestDTO data) { //mexer aqui pra verificar se os dados estão vindo do jeito certo
-
-        System.out.println(data);
+        User newUser = new User(data);
+        repository.save(newUser);
         return ResponseEntity.ok().build();
     }
 }
