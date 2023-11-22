@@ -21,7 +21,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity registerUser(@RequestBody @Valid UserRequestDTO data) { //mexer aqui pra verificar se os dados estão vindo do jeito certo
+    public ResponseEntity registerUser(@RequestBody @Valid UserRequestDTO data) {
         User newUser = new User(data);
         repository.save(newUser);
         return ResponseEntity.ok().build();

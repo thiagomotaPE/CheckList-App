@@ -15,13 +15,13 @@ public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer user_id;
     @NotBlank
-    @Size(min = 4, max = 20)
+    @Size(min = 4, max = 20, message = "Seu nome deve conter no minimo 4 caracteres")
     private String  user_name;
     @Email
     @Column(unique = true)
     private String user_email;
     @NotBlank
-    @Size(min = 8, max = 8)
+    @Size(min = 8, max = 8, message = "Sua senha deve conter no minimo 8 caracteres")
     private String user_password;
 
     public User(UserRequestDTO userRequestDTO) {
