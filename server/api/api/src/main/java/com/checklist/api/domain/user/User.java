@@ -21,7 +21,7 @@ public class User {
     @Column(unique = true)
     private String user_email;
     @NotBlank
-    @Size(min = 8, max = 8, message = "Sua senha deve conter no minimo 8 caracteres")
+    @Size(min = 4, message = "Sua senha deve conter no minimo 4 caracteres")
     private String user_password;
 
     public User(UserRequestDTO userRequestDTO) {
